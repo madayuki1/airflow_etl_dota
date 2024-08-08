@@ -163,7 +163,7 @@ cython_debug/
 
 airflow-webserver.pid
 airflow-worker.pid
-aiflow.cfg
+airflow.cfg
 webserver_config.py
 logs/
 logs
