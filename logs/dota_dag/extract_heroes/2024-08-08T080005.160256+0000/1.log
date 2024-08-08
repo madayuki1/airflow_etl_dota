@@ -1,0 +1,35 @@
+[2024-08-08 08:00:07,600] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dota_dag.extract_heroes 2024-08-08T08:00:05.160256+00:00 [queued]>
+[2024-08-08 08:00:07,619] {taskinstance.py:877} INFO - Dependencies all met for <TaskInstance: dota_dag.extract_heroes 2024-08-08T08:00:05.160256+00:00 [queued]>
+[2024-08-08 08:00:07,620] {taskinstance.py:1068} INFO - 
+--------------------------------------------------------------------------------
+[2024-08-08 08:00:07,621] {taskinstance.py:1069} INFO - Starting attempt 1 of 2
+[2024-08-08 08:00:07,621] {taskinstance.py:1070} INFO - 
+--------------------------------------------------------------------------------
+[2024-08-08 08:00:07,641] {taskinstance.py:1089} INFO - Executing <Task(PythonOperator): extract_heroes> on 2024-08-08T08:00:05.160256+00:00
+[2024-08-08 08:00:07,645] {standard_task_runner.py:52} INFO - Started process 51 to run task
+[2024-08-08 08:00:07,649] {standard_task_runner.py:76} INFO - Running: ['airflow', 'tasks', 'run', 'dota_dag', 'extract_heroes', '2024-08-08T08:00:05.160256+00:00', '--job-id', '4', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/dota.py', '--cfg-path', '/tmp/tmp1iekya3x', '--error-file', '/tmp/tmpqzjzafm3']
+[2024-08-08 08:00:07,650] {standard_task_runner.py:77} INFO - Job 4: Subtask extract_heroes
+[2024-08-08 08:00:07,700] {logging_mixin.py:104} INFO - Running <TaskInstance: dota_dag.extract_heroes 2024-08-08T08:00:05.160256+00:00 [running]> on host ec67c4f7e31a
+[2024-08-08 08:00:07,744] {taskinstance.py:1283} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=dota_dag
+AIRFLOW_CTX_TASK_ID=extract_heroes
+AIRFLOW_CTX_EXECUTION_DATE=2024-08-08T08:00:05.160256+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-08-08T08:00:05.160256+00:00
+[2024-08-08 08:00:07,745] {taskinstance.py:1482} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1138, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 117, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 128, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/dota.py", line 24, in extract_heroes
+    etl_dota.extract('all_heroes_id')
+AttributeError: module 'etl_dota' has no attribute 'extract'
+[2024-08-08 08:00:07,754] {taskinstance.py:1532} INFO - Marking task as UP_FOR_RETRY. dag_id=dota_dag, task_id=extract_heroes, execution_date=20240808T080005, start_date=20240808T080007, end_date=20240808T080007
+[2024-08-08 08:00:07,821] {local_task_job.py:146} INFO - Task exited with return code 1
